@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+           crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>Validation-Project</title>
+  </head>
+  <body>
+
+  <div class="container">
+
+
+    <!-- ------------------------img -->
+    <img src="" >
+
+
+    <!-- ------------------------form -->
+    <form id="mainForm" novalidate>
+        <h2>JavaScript Form Validation </h2>
+             <!--******* Name -->
+        <div class="form-control">
+           <label for="name">Name</label>
+           <input type="text" id="name" 
+                  placeholder="Enter Your Name"
+                  autocomplete="off">
+           <i class="icon"></i>       
+        </div>
+             <!--******* Email -->
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="email" id="email" 
+                 placeholder="Enter Your Email"
+                 autocomplete="off">
+          <i class="icon"></i>       
+       </div>
+             <!--******* Phone -->
+        <div class="form-control">
+          <label for="phone">Phone</label>
+          <input type="phone" id="phone" 
+                 placeholder="Enter Your Phone"
+                 autocomplete="off">
+          <i class="icon"></i>       
+       </div>
+             <!--******* Password -->
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input type="password" id="password" 
+                 placeholder="Enter Your Password"
+                 autocomplete="off">
+          <i class="icon"></i>       
+       </div>
+             <!--******* Message -->
+        <div class="form-control">
+          <label for="message">Message</label>
+          <textarea type="message" id="message" 
+                   placeholder="Enter Your Message">
+          </textarea>
+          <i class="icon"></i>       
+       </div>
+             <!--******* Button-Submit-->
+       <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Success-Modal -->
+  <div class="modal" id="SuccessModal" >
+     <div class="modal-content">
+        <span class="closs-button"> &times; </span>
+        <h2>Success!</h2>
+        <p>your form has been sybmitted successfully.</p>
+     </div>
+  </div>
+ 
+
+    
+    <script src="main.js"></script>
+  </body>
+</html>
