@@ -11,72 +11,43 @@
   </head>
   <body>
 
-  <div class="container">
-
-
-    <!-- ------------------------img -->
-    <img src="/img/validation form image.png" >
-
-
-    <!-- ------------------------form -->
-    <form id="mainForm" novalidate>
-        <h2>JavaScript Form Validation </h2>
-             <!--******* Name -->
-        <div class="form-control">
-           <label for="name">Name</label>
-           <input type="text" id="name" 
-                  placeholder="Enter Your Name"
-                  autocomplete="off">
-           <i class="icon"></i>       
-        </div>
-             <!--******* Email -->
-        <div class="form-control">
-          <label for="email">Email</label>
-          <input type="email" id="email" 
-                 placeholder="Enter Your Email"
-                 autocomplete="off">
-          <i class="icon"></i>       
-       </div>
-             <!--******* Phone -->
-        <div class="form-control">
-          <label for="phone">Phone</label>
-          <input type="phone" id="phone" 
-                 placeholder="Enter Your Phone"
-                 autocomplete="off">
-          <i class="icon"></i>       
-       </div>
-             <!--******* Password -->
-        <div class="form-control">
-          <label for="password">Password</label>
-          <input type="password" id="password" 
-                 placeholder="Enter Your Password"
-                 autocomplete="off">
-          <i class="icon"></i>       
-       </div>
-             <!--******* Message -->
-        <div class="form-control">
-          <label for="message">Message</label>
-          <textarea type="message" id="message" 
-                   placeholder="Enter Your Message">
-          </textarea>
-          <i class="icon"></i>       
-       </div>
-             <!--******* Button-Submit-->
-       <button type="submit">Submit</button>
-    </form>
-  </div>
-
-  <!-- Success-Modal -->
-  <div class="modal" id="SuccessModal" >
-     <div class="modal-content">
-        <span class="closs-button"> &times; </span>
-        <h2>Success!</h2>
-        <p>your form has been sybmitted successfully.</p>
-     </div>
-  </div>
+  
+ <div class="container">
+  <div class="box">
+    <!-- ----------------------img -->
+    <div class="img">
+        <img src="/img/validation form image.png" >
+    </div>
+   <!-- --------------------form -->
+    <form id="form">
+      <h1> REGISTER </h1>
  
+      <div class="div">
+        <input data-type="Username" type="text" placeholder="Username">
+        <span></span>
+      </div>
+ 
+      <div class="div">
+       <input data-type="Email" type="text" placeholder="Email">
+       <span></span>
+      </div>  
+ 
+      <div class="div">
+       <input data-type="Password" type="text" placeholder="Password">
+       <span></span>
+      </div>
+  
+      <button type="submit">Register</button>
+   
+    </form>
+ </div>
+ </div>
 
+
+ 
     
     <script src="main.js"></script>
   </body>
 </html>
+
+

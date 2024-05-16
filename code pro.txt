@@ -1,0 +1,287 @@
+<div class="container">
+
+
+    <!-- ------------------------img -->
+    <img src="/img/validation form image.png" >
+
+
+    <!-- ------------------------form -->
+    <form id="mainForm" novalidate>
+        <h2>JavaScript Form Validation </h2>
+             <!--******* Name -->
+        <div class="form-control">
+           <label for="name">Name</label>
+           <input type="text" id="name" 
+                  placeholder="Enter Your Name"
+                  autocomplete="off">
+           <i class="icon"></i>       
+        </div>
+             <!--******* Email -->
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="email" id="email" 
+                 placeholder="Enter Your Email"
+                 autocomplete="off">
+          <i class="icon"></i>       
+       </div>
+             <!--******* Phone -->
+        <div class="form-control">
+          <label for="phone">Phone</label>
+          <input type="phone" id="phone" 
+                 placeholder="Enter Your Phone"
+                 autocomplete="off">
+          <i class="icon"></i>       
+       </div>
+             <!--******* Password -->
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input type="password" id="password" 
+                 placeholder="Enter Your Password"
+                 autocomplete="off">
+          <i class="icon"></i>       
+       </div>
+             <!--******* Message -->
+        <div class="form-control">
+          <label for="message">Message</label>
+          <textarea type="message" id="message" 
+                   placeholder="Enter Your Message">
+          </textarea>
+          <i class="icon"></i>       
+       </div>
+             <!--******* Button-Submit-->
+       <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Success-Modal -->
+  <div class="modal" id="SuccessModal" >
+     <div class="modal-content">
+        <span class="closs-button"> &times; </span>
+        <h2>Success!</h2>
+        <p>your form has been sybmitted successfully.</p>
+     </div>
+  </div>
+---------------------------------------------------------------------------------------------css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sego UI", sans-serif;
+}
+body {
+  background-color: #dcdcdc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 20px;
+}
+.container {
+  display: flex;
+  gap: 20px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 920px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+/* ----------------------------------------img */
+.container img {
+  width: 50%;
+  object-fit: cover;
+}
+/* ----------------------------------------form */
+
+.container form {
+  width: 50%;
+}
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.form-control {
+  position: relative;
+  margin-bottom: 15px;
+}
+.form-control label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-control input,
+.form-control textarea {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+}
+button {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  background-color: #77b7cd;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+button:hover {
+  background-color: #295580;
+}
+
+.form-control .icon {
+  position: absolute;
+  right: 10px;
+  top: 71%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: transparent;
+  pointer-events: none;
+}
+
+.form-control.success input,
+.form-control.success textarea{
+    border-color: #2ecc71;
+}
+
+.form-control.success .icon{
+    color:#2ecc71 ;
+}
+/* ----------------------------------------modal */
+
+.modal {
+  display: none;
+}
+/* ------------responsive */
+@media screen and (max-width: 920px) {
+  .container img {
+    display: none;
+  }
+  .container form {
+    width: 100%;
+  }
+}
+---------------------------------------------------------------------------------------js
+
+document.addEventListener('DOMContentLoaded',function(){
+
+      const form = document.getElementById('mainForm');
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const phone = document.getElementById('phone');
+      const password = document.getElementById('password');
+      const message = document.getElementById('message');
+
+
+     form.addEventListener('submit',function(e){
+        e.preventDefault();
+        if(checkInputs()){
+            showModal();
+
+        }
+     });
+
+
+     name.addEventListener('input', () =>{
+        validateField(name, name.value.trim() !== '' ,
+                        'Name cannot be blank');
+     });
+
+     email.addEventListener('input', () => {
+        validateField(email, isEmail(email.value.trim()),
+                         'Not a valid email');
+     });
+
+     phone.addEventListener('input', () => {
+        validateField(phone, isPhone(phone.value.trim()),
+                         'Not a valid phone number');
+     });
+
+     password.addEventListener('input', () =>{
+        validateField(password , password.valur.trim().length 
+               >= 8,'Password must be at least 8 characters ');
+     });
+
+     message.addEventListener('input', () =>{
+        validateField(message, message.value.trim() !== '' ,
+                        'message cannot be blank');
+     });
+    
+     function checkInputs(){
+        let isValid = true;
+        validateField(name, name.value.trim() !== '' ,
+        'Name cannot be blank');
+        validateField(email, isEmail(email.value.trim()),
+        'Not a valid email');
+        validateField(phone, isPhone(phone.value.trim()),
+        'Not a valid phone number');
+        validateField(password , password.valur.trim().length 
+               >= 8,'Password must be at least 8 characters ');
+        validateField(message, message.value.trim() !== '' ,
+               'message cannot be blank');
+
+
+         document.querySelectorAll('.form-control').forEach((control)
+                =>{
+                  if(control.classList.contains('error')){
+                    isValid = false;
+                    }
+                  });
+
+         return isValid;
+     }
+
+      function validateField(input, condition, errorMessage){
+        if(condition){
+            setSuccess(input);
+        }
+        else{
+            setError(input, errorMessage)
+            
+        }
+      }
+
+      function setError(input, message){
+        const formControl = input.parentElement;
+        const icon = formControl.querySelector('.icon');
+        formControl.className = 'form-control error';
+        icon.className = 'icon fas fa-times-circle';
+        input.placeholder = message;
+      }
+
+
+      function setSuccess(input){
+        const formControl = input.parentElement;
+        const icon = formControl.querySelector('.icon');
+        formControl.className = 'form-control success';
+        icon.className = 'icon fas fa-check-circle';
+        }
+
+      function  isEmail(email){
+        return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,6}$/.test(email);
+      }
+
+      function isPhone(phone){
+        return /^\+?(\d.*){3,}$/.test(phone);
+      }
+
+      function showModal(){
+          const modal = document.getElementById('successModal');
+          modal.style.display = 'block';
+
+          const closeBtn = document.querySelector('.close-button');
+          closeBtn.onclick = function(){
+            modal.style.display = 'none';
+          };
+
+        window.onclick = function(event){
+             if(event.target === modal){
+                modal.style.display = 'none';
+             }
+        };
+
+      }
+});
